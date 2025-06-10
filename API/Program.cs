@@ -1,3 +1,6 @@
+using API.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<StoreContext>(c => c.UseSqlite(builder.Configuration.GetConnectionString("DefaultConection")));
 
 var app = builder.Build();
 
