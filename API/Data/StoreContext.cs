@@ -9,6 +9,10 @@ namespace API.Data
         {
         }
 
+        protected StoreContext()
+        {
+        }
+
         public DbSet<Product> Products { get; set; }
 
     }
