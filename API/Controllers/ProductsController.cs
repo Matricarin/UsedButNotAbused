@@ -1,3 +1,5 @@
+using API.Data;
+using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -6,10 +8,18 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        [HttpGet]
-        public string GetProducts()
+        private StoreContext _context;
+
+        public ProductsController(StoreContext context)
         {
-            return "list of all products";
+            _context = context;
+        }
+
+        [HttpGet]
+        public ActionResult<List<Product>> GetProducts()
+        {
+            var products = _context.Products.ToList();
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
