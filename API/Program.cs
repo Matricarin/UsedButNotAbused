@@ -9,7 +9,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<StoreContext>(c =>
-    c.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("API")));
+    c.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Infrastructure")));
 
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 
